@@ -1,0 +1,75 @@
+{
+  "last_updated": "2026-04-21T18:16:23.508430",
+  "market_session": "regular",
+  "stocks": [
+    {
+      "ticker": "QBTS",
+      "price": 20.68,
+      "change_pct": -4.5,
+      "volume": 25995643,
+      "avg_volume": 27856939,
+      "volatility": 6.33,
+      "news_sentiment": 0.5,
+      "news_count": 0,
+      "headline": "No live headline yet for QBTS."
+    },
+    {
+      "ticker": "QUBT",
+      "price": 9.63,
+      "change_pct": -2.03,
+      "volume": 14371093,
+      "avg_volume": 12851647,
+      "volatility": 3.56,
+      "news_sentiment": 0.5,
+      "news_count": 0,
+      "headline": "No live headline yet for QUBT."
+    },
+    {
+      "ticker": "IONQ",
+      "price": 46.86,
+      "change_pct": -3.02,
+      "volume": 27411853,
+      "avg_volume": 24872375,
+      "volatility": 4.73,
+      "news_sentiment": 0.5,
+      "news_count": 0,
+      "headline": "No live headline yet for IONQ."
+    },
+    {
+      "ticker": "RGTI",
+      "price": 18.64,
+      "change_pct": -5.07,
+      "volume": 21518943,
+      "avg_volume": 29652367,
+      "volatility": 6.81,
+      "news_sentiment": 0.5,
+      "news_count": 0,
+      "headline": "No live headline yet for RGTI."
+    }
+  ],
+  "macro": {
+    "qqq_change_pct": 0.8,
+    "spy_change_pct": 0.4,
+    "vix_change_pct": -1.9
+  },
+  "news": [
+    {
+      "ticker": "SECTOR",
+      "title": "Quantum computing names trade higher together in active session",
+      "sentiment": 0.7,
+      "impact": "medium"
+    },
+    {
+      "ticker": "IONQ",
+      "title": "Analysts highlight long-term upside in quantum infrastructure buildout",
+      "sentiment": 0.6,
+      "impact": "medium"
+    },
+    {
+      "ticker": "QUBT",
+      "title": "Momentum traders continue rotating into high-beta emerging tech names",
+      "sentiment": 0.64,
+      "impact": "high"
+    }
+  ]
+}
