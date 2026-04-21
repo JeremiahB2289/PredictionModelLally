@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Stocks Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <h1>Quantum Stocks Predictor</h1>
+      <p>Starter dashboard for QBTS, QUBT, IONQ, and RGTI</p>
+    </div>
+    <div class="hero-actions">
+      <button id="refreshBtn">Refresh Data</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid cards-4">
+      <div class="card metric">
+        <h3>Prediction</h3>
+        <p id="predictionDirection" class="big">--</p>
+      </div>
+      <div class="card metric">
+        <h3>Confidence</h3>
+        <p id="confidenceValue" class="big">--</p>
+      </div>
+      <div class="card metric">
+        <h3>Expected Move</h3>
+        <p id="expectedMoveValue" class="big">--</p>
+      </div>
+      <div class="card metric">
+        <h3>Risk</h3>
+        <p id="riskValue" class="big">--</p>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2>Why the model thinks this</h2>
+        <p id="explanationText">Loading...</p>
+      </div>
+      <div class="card">
+        <h2>Basket Snapshot</h2>
+        <div class="feature-list" id="featureList"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <h2>Tracked Stocks</h2>
+        <input id="searchBar" type="text" placeholder="Search ticker..." />
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Price</th>
+            <th>Change %</th>
+            <th>Volume</th>
+            <th>Rel. Volume</th>
+            <th>Volatility</th>
+            <th>News Sentiment</th>
+          </tr>
+        </thead>
+        <tbody id="stockTableBody"></tbody>
+      </table>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2>News Panel</h2>
+        <div id="newsList"></div>
+      </div>
+      <div class="card">
+        <h2>Build Next</h2>
+        <ul>
+          <li>Leader-laggard catch-up detector</li>
+          <li>Custom quantum sector index chart</li>
+          <li>Premarket vs postmarket model comparison</li>
+          <li>Model accuracy tracker over time</li>
+          <li>Real LLM explanation and headline scoring</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
