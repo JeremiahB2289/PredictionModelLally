@@ -13,6 +13,9 @@ from typing import Any, Dict, List
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "sample_market_data.json"
 TICKERS = ["QBTS", "QUBT", "IONQ", "RGTI"]
 
+POSITIVE_WORDS = ["surge", "gain", "beat", "growth", "strong", "upgrade"]
+NEGATIVE_WORDS = ["drop", "miss", "weak", "downgrade", "loss", "fall"]
+
 
 def load_sample_data() -> Dict[str, Any]:
     with open(DATA_PATH, "r", encoding="utf-8") as file:
@@ -38,6 +41,17 @@ def _build_stock_record(ticker: str, info: Dict[str, Any]) -> Dict[str, Any]:
     relative_volume = volume / avg_volume if avg_volume else 1.0
     volatility = abs(change_pct) * 1.2 + min(relative_volume, 4.0)
 
+    headline = f"No live headline yet for {ticker}."
+    sentiment = 0.5
+    text = headline.lower()
+    for word in POSITIVE_WORDS:
+        if word in text:
+            sentiment += 0.1
+    for word in NEGATIVE_WORDS:
+        if word in text:
+            sentiment -= 0.1
+    sentiment = max(0.0, min(1.0, sentiment))
+
     return {
         "ticker": ticker,
         "price": round(price, 2),
@@ -45,7 +59,7 @@ def _build_stock_record(ticker: str, info: Dict[str, Any]) -> Dict[str, Any]:
         "volume": volume,
         "avg_volume": avg_volume,
         "volatility": round(volatility, 2),
-        "news_sentiment": 0.5,
+        "news_sentiment": round(sentiment, 2),
         "news_count": 0,
         "headline": f"No live headline yet for {ticker}."
     }
