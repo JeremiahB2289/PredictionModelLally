@@ -39,7 +39,7 @@ def build_features(data: Dict[str, Any]) -> Dict[str, Any]:
 
     leader_change = sorted_by_change[-1]["change_pct"]
     laggard_change = sorted_by_change[0]["change_pct"]
-    leader_gap = leader_change - laggard_change
+    leader_gap = (leader_change - laggard_change) / (abs(laggard_change) + 1e-6)
 
     volume_spike_ratio = sum(
         1 for stock in stocks if stock["volume"] > stock["avg_volume"] * 1.5
@@ -48,6 +48,8 @@ def build_features(data: Dict[str, Any]) -> Dict[str, Any]:
     volatility_trend = (
         sum(1 for stock in stocks if stock["volatility"] > 5.0) / len(stocks)
     )
+
+    agreement_strength = abs(positive_ticker_ratio - 0.5) * 2
 
     return {
         "basket_momentum": round(basket_momentum, 3),
@@ -61,6 +63,7 @@ def build_features(data: Dict[str, Any]) -> Dict[str, Any]:
         "positive_ticker_ratio": round(positive_ticker_ratio, 3),
         "market_session": data.get("market_session", "unknown"),
         "qqq_change_pct": round(float(macro.get("qqq_change_pct", 0.0)), 3),
+        "agreement_strength": round(agreement_strength, 3),
         "leader": leader,
         "laggard": laggard
     }
