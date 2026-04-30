@@ -12,7 +12,7 @@ def clamp(value: float, low: float, high: float) -> float:
 
 
 # Load ML model if it exists
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "model.pkl")
 model = None
 
 if os.path.exists(MODEL_PATH):
