@@ -5,3 +5,5 @@ __pycache__/
 .env
 models/
 data/training_data.csv
+/data
+*.csv
