@@ -36,6 +36,8 @@ def features_to_vector(features: Dict[str, Any]):
         features.get("positive_ticker_ratio", 0.0),
         features.get("qqq_change_pct", 0.0),
         features.get("agreement_strength", 0.0),
+        features.get("momentum_agreement", 0.0),
+features.get("volatility_adjusted_momentum", 0.0),
         features.get("leader_gap", 0.0)
     ]
 

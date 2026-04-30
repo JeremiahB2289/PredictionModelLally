@@ -131,7 +131,16 @@ def build_dataset():
         current_price = sum(snapshot[t]["c"] for t in snapshot) / len(snapshot)
         future_price = sum(future_snapshot[t]["c"] for t in future_snapshot) / len(future_snapshot)
 
-        label = 1 if future_price > current_price else 0
+        threshold = 0.2  # percent
+
+        change = ((future_price - current_price) / current_price) * 100
+
+        if change > threshold:
+            label = 1
+        elif change < -threshold:
+            label = 0
+        else:
+            continue  # skip this row
 
         rows.append(features + [label])
 
