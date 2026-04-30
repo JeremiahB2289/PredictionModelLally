@@ -113,13 +113,18 @@ def get_prediction():
 def refresh():
     new_data = refresh_data()
     features = build_features(new_data)
+    log_features(features)
     prediction = predict_from_features(features)
+    explanation = build_explanation(features, prediction)
+    return {
+        "data": new_data,
+        "features": features,
+        "prediction": prediction,
+        "explanation": explanation
+    }
 
 
 if __name__ == "__main__":
     import uvicorn
 
-    import os
-
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="127.0.0.1", port=8000)

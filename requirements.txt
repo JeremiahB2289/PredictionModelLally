@@ -4,6 +4,3 @@ pydantic
 yfinance
 pandas
 numpy
-scikit-learn
-requests
-python-dotenv
