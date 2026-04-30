@@ -12,7 +12,7 @@ def clamp(value: float, low: float, high: float) -> float:
 
 
 # Load ML model if it exists
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "model.pkl")
 model = None
 
 if os.path.exists(MODEL_PATH):
@@ -36,6 +36,8 @@ def features_to_vector(features: Dict[str, Any]):
         features.get("positive_ticker_ratio", 0.0),
         features.get("qqq_change_pct", 0.0),
         features.get("agreement_strength", 0.0),
+        features.get("momentum_agreement", 0.0),
+features.get("volatility_adjusted_momentum", 0.0),
         features.get("leader_gap", 0.0)
     ]
 
