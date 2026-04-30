@@ -4,4 +4,4 @@ __pycache__/
 *.pyc
 .env
 models/
-training_data.csv
+data/training_data.csv
