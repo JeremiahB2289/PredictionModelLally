@@ -1,92 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantum Stocks Predictor</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Stocks Predictor | QBTS, QUBT, IONQ, RGTI</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="hero">
-    <div>
-      <h1>Quantum Stocks Predictor</h1>
-      <p>Starter dashboard for QBTS, QUBT, IONQ, and RGTI</p>
+    <div class="container">
+        <header>
+            <h1>🚀 Quantum Stocks Predictor</h1>
+            <p>Real-time predictions for QBTS, QUBT, IONQ & RGTI</p>
+        </header>
+
+        <div class="controls">
+            <button id="refreshBtn" class="btn-primary">🔄 Refresh Data</button>
+            <div class="search-box">
+                <input type="text" id="searchBar" placeholder="Filter stocks..." />
+            </div>
+        </div>
+
+        <!-- Prediction Card -->
+        <div class="card prediction-card">
+            <h2>🎯 Short-Term Prediction</h2>
+            <div class="prediction-main">
+                <div class="prediction-direction">
+                    <div class="direction-label">Expected Direction</div>
+                    <div id="predictionDirection" class="direction-value">---</div>
+                </div>
+                <div class="prediction-stats">
+                    <div class="stat">
+                        <div class="stat-label">Confidence</div>
+                        <div id="confidenceValue" class="stat-value">---</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Expected Move</div>
+                        <div id="expectedMoveValue" class="stat-value">---</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Risk Level</div>
+                        <div id="riskValue" class="stat-value">---</div>
+                    </div>
+                </div>
+            </div>
+            <div id="modelInfo" style="text-align: center; margin-top: 15px; font-size: 12px; color: #666;"></div>
+            <div class="explanation-box">
+                <div class="explanation-label">📝 Analysis</div>
+                <div id="explanationText" class="explanation-text">Loading prediction...</div>
+            </div>
+        </div>
+
+        <!-- Market Features Card -->
+        <div class="card features-card">
+            <h2>🔬 Market Features</h2>
+            <div id="marketSummary" class="market-summary"></div>
+            <div id="featureList" class="feature-list">
+                <div class="loading">Loading features...</div>
+            </div>
+        </div>
+
+        <!-- Stocks Table Card -->
+        <div class="card stocks-card">
+            <h2>📊 Stock Data</h2>
+            <div class="table-container">
+                <table class="stocks-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                            <th>Volume</th>
+                            <th>Rel Volume</th>
+                            <th>Volatility</th>
+                            <th>Sentiment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockTableBody">
+                        <tr><td colspan="7" class="loading">Loading stocks...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- News Card -->
+        <div class="card news-card">
+            <h2>📰 Market News</h2>
+            <div id="newsList" class="news-list">
+                <div class="loading">Loading news...</div>
+            </div>
+        </div>
+
+        <footer>
+            <div id="timestamp"></div>
+            <div class="footer-note">Model predicts next 15-minute movement | Data refreshes every 60 seconds</div>
+        </footer>
     </div>
-    <div class="hero-actions">
-      <button id="refreshBtn">Refresh Data</button>
-    </div>
-  </header>
 
-  <main>
-    <section class="grid cards-4">
-      <div class="card metric">
-        <h3>Prediction</h3>
-        <p id="predictionDirection" class="big">--</p>
-      </div>
-      <div class="card metric">
-        <h3>Confidence</h3>
-        <p id="confidenceValue" class="big">--</p>
-      </div>
-      <div class="card metric">
-        <h3>Expected Move</h3>
-        <p id="expectedMoveValue" class="big">--</p>
-      </div>
-      <div class="card metric">
-        <h3>Risk</h3>
-        <p id="riskValue" class="big">--</p>
-      </div>
-    </section>
-
-    <section class="grid two-col">
-      <div class="card">
-        <h2>Why the model thinks this</h2>
-        <p id="explanationText">Loading...</p>
-      </div>
-      <div class="card">
-        <h2>Basket Snapshot</h2>
-        <div class="feature-list" id="featureList"></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="section-header">
-        <h2>Tracked Stocks</h2>
-        <input id="searchBar" type="text" placeholder="Search ticker..." />
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Ticker</th>
-            <th>Price</th>
-            <th>Change %</th>
-            <th>Volume</th>
-            <th>Rel. Volume</th>
-            <th>Volatility</th>
-            <th>News Sentiment</th>
-          </tr>
-        </thead>
-        <tbody id="stockTableBody"></tbody>
-      </table>
-    </section>
-
-    <section class="grid two-col">
-      <div class="card">
-        <h2>News Panel</h2>
-        <div id="newsList"></div>
-      </div>
-      <div class="card">
-        <h2>Build Next</h2>
-        <ul>
-          <li>Leader-laggard catch-up detector</li>
-          <li>Custom quantum sector index chart</li>
-          <li>Premarket vs postmarket model comparison</li>
-          <li>Model accuracy tracker over time</li>
-          <li>Real LLM explanation and headline scoring</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
